@@ -4,7 +4,7 @@ pipeline {
   stages {
     stage('test shared library') {
       steps {
-        sayHello('Shreya')
+        hello('Shreya')
       }
     }
     stage('shared lib execution') {
