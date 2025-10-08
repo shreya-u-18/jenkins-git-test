@@ -1,19 +1,22 @@
 @Library('my-shared-library') _
+
 pipeline {
-  agent any
-  stages {
-    stage('test shared library') {
-      steps {
-        hello('Shreya')
-      }
-    }
-    stage('shared lib execution') {
-      steps {
-         script {
-          def util = new org.example.HelloUtils(this)
-          util.sayHelloJenkins()
+    agent any
+
+    stages {
+        stage('Vars Greeting') {
+            steps {
+                greet('Alice')
+            }
         }
-      }
+
+        stage('Class Greeting') {
+            steps {
+                script {
+                    def util = new org.example.GreetingUtils(this)
+                    util.greetUser('Alice')
+                }
+            }
+        }
     }
-  }
 }
